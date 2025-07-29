@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
+
+import HomePage from "./pages/homepage";
+import Login from "./pages/login";
+import SignUp from "./pages/Signup";
+import Profile from "./pages/profile";
+
+function Navigation() {
+  return (
+    <nav style={{ padding: "10px", backgroundColor: "#eee" }}>
+      <Link to="/signup" style={{ marginRight: "10px" }}>Sign Up</Link>
+      <Link to="/login" style={{ marginRight: "10px" }}>Login</Link>
+      <Link to="/profile" style={{ marginRight: "10px" }}>Profile</Link>
+      <Link to="/home">Home</Link>
+    </nav>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+      
+        <Route path="/" element={<Navigate to="/signup" />} />
+
+       
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
