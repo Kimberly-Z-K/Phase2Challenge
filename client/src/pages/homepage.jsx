@@ -25,33 +25,10 @@ function HomePage() {
 
   return (
     <div style={styles.container}>
-      <h1>Welcome to Your Dashboard</h1>
+      <h1 style={styles.HomePageTitle}>HomePage</h1>
 
      
-      <form onSubmit={handleSearch} style={styles.searchForm}>
-        <input
-          type="text"
-          placeholder="Search for city..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={styles.searchInput}
-        />
-        <button type="submit" style={styles.searchButton}>Search</button>
-      </form>
-
-   
-      {results.length > 0 && (
-        <div style={styles.results}>
-          <h3>Search Results:</h3>
-          <ul>
-            {results.map((item, idx) => (
-              <li key={idx}>
-                <strong>{item.city}</strong> - {item.illness}: {item.cases} cases
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      
 
      
       <div style={styles.navGrid}>
@@ -67,11 +44,34 @@ function HomePage() {
           <FaBell size={50} color="#dc3545" />
           <span>Alerts</span>
         </Link>
-        <Link to="/settings" style={styles.navItem}>
-          <FaCog size={50} color="#6c757d" />
-          <span>Settings</span>
-        </Link>
+
+
       </div>
+
+      <form onSubmit={handleSearch} style={styles.searchForm}>
+    
+        <input
+          type="text"
+          placeholder="Search for city..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={styles.searchInput}
+        />
+        <button type="submit" style={styles.searchButton}>Search</button>
+      </form>
+      
+      {results.length > 0 && (
+        <div style={styles.results}>
+          <h3>Search Results:</h3>
+          <ul>
+            {results.map((item, idx) => (
+              <li key={idx}>
+                <strong>{item.city}</strong> - {item.illness}: {item.cases} cases
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
@@ -110,10 +110,21 @@ const styles = {
     marginBottom: "30px",
   },
   navGrid: {
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-    gap: "40px",
+ display: "flex",
+ marginBottom:"100px",
+ width:"100%",
+  justifyContent: "space-around",
+  flexWrap: "wrap",
+  gap: "40px",
+  padding: "20px",
+  borderRadius: "12px",
+  backgroundColor: "rgba(255, 255, 255, 0.1)",  
+  backdropFilter: "blur(12px)",               
+  WebkitBackdropFilter: "blur(12px)",           
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+  border: "1px solid rgba(255, 255, 255, 0.18)",
+  position: "relative",
+  zIndex: 10
   },
   navItem: {
     display: "flex",
@@ -125,6 +136,10 @@ const styles = {
     cursor: "pointer",
     width: "120px",
   },
+  HomePageTitle:{
+     marginBottom:'100px',
+      fontSize: "50px"
+  }
 };
 
 export default HomePage;

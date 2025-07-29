@@ -6,6 +6,11 @@ import Login from "./pages/login";
 import SignUp from "./pages/Signup";
 import Profile from "./pages/profile";
 
+
+import Dashboard from "./pages/dashboard";
+import Messages from "./pages/messages";
+import Alerts from "./pages/Alerts";
+
 function Navigation() {
   return (
     <nav style={{ padding: "10px", backgroundColor: "#eee" }}>
@@ -30,6 +35,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<HomePage />} />
+
+
+     <Route path="/dashboard" element={<Dashboard />} />
+     <Route path="/messages" element={<Messages />} />
+    <Route path="/alerts" element={<Alerts />} />
+
       </Routes>
     </Router>
   );
